@@ -1,6 +1,7 @@
 package com.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -9,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
@@ -30,7 +32,9 @@ public class CreditAccount {
 	private typeOfCredit typeOfCredit;
 	private long creditLimit;
 	private long creditUsed;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "payment_id", referencedColumnName = "id") // referencedColumnName points to PaymentHistory's primary key
-    private paymentHistory paymentHistory;
+//	@OneToMany(mappedBy = "creditAccount", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JoinColumn(name = "payment_id", referencedColumnName = "id") // referencedColumnName points to PaymentHistory's primary key
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	 @JoinColumn(name = "credit_account_id") 
+   private List<paymentHistory> paymentHistory;
 }

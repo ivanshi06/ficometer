@@ -46,9 +46,15 @@ public class CustomerController {
 		return customerService.getAllCustomer();
 	}
 	
-	@PostMapping("add/credit")
+	@PostMapping("/add/credit")
 	public ResponseEntity<CreditAccount> addCredit(@RequestBody CreditAccount credit){
 		creditService.addCredit(credit);
 		return ResponseEntity.ok(credit);
 	}
+	
+//	@GetMapping("/check/score/{user_id}")
+//	public ResponseEntity<Integer> checkCreditScore(@PathVariable(name = "id") int uid)
+//	{
+//		return customerService.checkCreditScore(uid);
+//	}
 }
