@@ -29,12 +29,12 @@ public class CreditAccount {
 	private LocalDate createdAt;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="type_credit_id")
-	private typeOfCredit typeOfCredit;
+	private TypeOfCredit typeOfCredit;
 	private long creditLimit;
 	private long creditUsed;
 //	@OneToMany(mappedBy = "creditAccount", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JoinColumn(name = "payment_id", referencedColumnName = "id") // referencedColumnName points to PaymentHistory's primary key
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	 @JoinColumn(name = "credit_account_id") 
-   private List<paymentHistory> paymentHistory;
+   private List<PaymentHistory> paymentHistory;
 }

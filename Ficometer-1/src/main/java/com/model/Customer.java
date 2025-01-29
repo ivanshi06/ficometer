@@ -36,4 +36,8 @@ public class Customer {
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name="customer_id")
 	private List<CreditAccount> creditAccount;
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name="Credit_Enquiries")
+	private List<CreditEnquiries> creditEnquiries;
+	
 }

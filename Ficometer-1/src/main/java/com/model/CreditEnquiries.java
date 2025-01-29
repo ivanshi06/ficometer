@@ -25,4 +25,5 @@ public class CreditEnquiries {
 	private String reportLink;
 	private String review;
 	private String improvementTips;
+//	private Customer customer;
 }

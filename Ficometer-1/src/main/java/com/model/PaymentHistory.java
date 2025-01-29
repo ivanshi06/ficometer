@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class paymentHistory {
+public class PaymentHistory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "creditAccount_seq")@SequenceGenerator(name = "creditAccount_seq", sequenceName = "creditAccount_sequence", allocationSize = 1)
@@ -29,6 +29,7 @@ public class paymentHistory {
 	private long amountPaid;
 	private LocalDate dueDate;
 	private double minimumEmi;
+	private int emiMonths;
 	/*
 	 * @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	 * 
