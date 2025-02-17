@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class Customer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "creditAccount_seq")@SequenceGenerator(name = "creditAccount_seq", sequenceName = "creditAccount_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private String email;
@@ -39,5 +39,10 @@ public class Customer {
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name="Credit_Enquiries")
 	private List<CreditEnquiries> creditEnquiries;
+	private String password;
+	
+	
+	
+	
 	
 }

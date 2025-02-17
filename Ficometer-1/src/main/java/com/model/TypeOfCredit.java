@@ -1,27 +1,31 @@
 package com.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class TypeOfCredit {
+public enum TypeOfCredit {
+    HOME_LOAN(1),
+    PERSONAL_LOAN(2),
+    CREDIT_LOAN(3),
+    CAR_LOAN(4),
+    EDUCATION_LOAN(5),
+    BUSINESS_LOAN(6);
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "creditAccount_seq")@SequenceGenerator(name = "creditAccount_seq", sequenceName = "creditAccount_sequence", allocationSize = 1)
-	private int id;
-	private String label;
-	
-	@OneToOne(mappedBy = "typeOfCredit")
-	private CreditAccount creditAccount;
-	
+    private final int id;
+
+    TypeOfCredit(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public static TypeOfCredit fromId(int id) {
+        for (TypeOfCredit type : TypeOfCredit.values()) {
+            if (type.getId() == id) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Invalid TypeOfCredit id: " + id);
+    }
 }
+

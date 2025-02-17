@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class CreditEnquiries {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "creditAccount_seq")@SequenceGenerator(name = "creditAccount_seq", sequenceName = "creditAccount_sequence", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private int score;
 	private LocalDate checkedOn;
